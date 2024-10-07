@@ -1,4 +1,4 @@
-package com.ashtensanchezcustomersupport;
+package com.example.ashtensanchezcustomersupport;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

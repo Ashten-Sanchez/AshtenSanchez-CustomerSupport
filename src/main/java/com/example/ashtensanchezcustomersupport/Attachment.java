@@ -1,4 +1,4 @@
-package com.ashtensanchezcustomersupport;
+package com.example.ashtensanchezcustomersupport;
 
 public class Attachment {
 
