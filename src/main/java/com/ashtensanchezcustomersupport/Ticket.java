@@ -1,14 +1,17 @@
 package com.ashtensanchezcustomersupport;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Ticket {
 
     private String customerName;
+    private LocalDate date;
     private String subject;
     private String body;
     private List<Attachment> attachments;
+
 
     // Default constructor
     public Ticket() {
@@ -23,6 +26,15 @@ public class Ticket {
         this.subject = subject;
         this.body = body;
         this.attachments = new ArrayList<>();
+    }
+
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate() {
+        this.date = LocalDate.now();
     }
 
     public String getCustomerName() {
