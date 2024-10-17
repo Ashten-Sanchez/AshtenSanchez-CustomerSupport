@@ -1,21 +1,22 @@
 package com.ashtensanchezcustomersupport;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Ticket {
+public class Ticket implements Serializable {
 
     private String customerName;
     private String subject;
     private String body;
     private String attachmentName;
-    private byte[] attachments;
+    private Attachment attachments;
 
     public Ticket() {
 
         super();
     }
 
-    public Ticket(String customerName, String subject, String body, String attachmentName, byte[] attachments) {
+    public Ticket(String customerName, String subject, String body, String attachmentName, Attachment attachments) {
         this.customerName = customerName;
         this.subject = subject;
         this.body = body;
@@ -33,12 +34,12 @@ public class Ticket {
         this.attachmentName = attachmentName;
     }
 
-    public byte[] getAttachments() {
+    public Attachment getAttachments() {
 
         return attachments;
     }
 
-    public void setAttachments(byte[] attachments) {
+    public void setAttachments(Attachment attachments) {
 
         this.attachments = attachments;
     }
@@ -75,7 +76,7 @@ public class Ticket {
 
     public boolean hasAttachments() {
 
-        return attachmentName != null && attachments != null && attachments.length > 0;
+        return attachments.getName().length() > 0 && attachments != null && attachments.getContents().length > 0;
     }
 
 
