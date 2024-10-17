@@ -1,15 +1,10 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
-
-  <head>
-    <title>JSP - Hello World</title>
-  </head>
-
-  <body>
-    <h1><%= "Ticket Tracker" %></h1>
-    <br/>
-    <a href="ticket">Go to Ticket Servlet</a>
-  </body>
-
+<head>
+    <title>Welcome</title>
+</head>
+<body>
+<jsp:forward page="/WEB-INF/jsp/view/login.jsp" />
+</body>
 </html>
