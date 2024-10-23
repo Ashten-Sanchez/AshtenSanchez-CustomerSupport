@@ -12,33 +12,27 @@
     </head>
     <body>
 
-        <a href="<c:url value='/login'>
-
-            <c:param name='logout'/>
-
-            </c:url>">Logout</a>
+        <a href="<c:url value='/logout'/>">Logout</a>
 
         <h2>Create a Ticket</h2>
 
-            <form method="POST" action="ticket" enctype="multipart/form-data">
+            <form:form method="POST" action="create" modelAttribute="ticket" enctype="multipart/form-data">
 
-                <input type="hidden" name="action" value="create">
+                <form:label path="subject">Subject:</form:label><br>
+                    <form:input path="subject"/><br><br>
 
-                Subject:<br>
-                <input type="text" name="title"><br><br>
+                <form:label path="customerName">Customer Name:</form:label><br>
+                    <form:input path="customerName"/><br><br>
 
-                Customer Name:<br>
-                <input type="text" name="customerName"><br><br>
-
-                Body:<br>
-
-                <textarea name="body" rows="25" cols="100"></textarea><br><br>
+                <form:label path="body">Body:</form:label><br>
+                    <form:textarea path="body"  rows="25" cols="100"/><br><br>
 
                 <b>Attachment</b><br>
+                    <form:input path="attachment" type="file"/><br><br>
 
-                <input type="file" name="file1"><br><br>
+                    <input type="submit" value="Submit">
 
-                <input type="submit" value="Submit">
-            </form>
+            </form:form>
+
     </body>
 </html>

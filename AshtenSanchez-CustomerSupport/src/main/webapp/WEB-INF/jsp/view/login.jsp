@@ -21,14 +21,17 @@
 
         </c:if>
 
-        <br><br>
+        <form:form method="POST" action="login" modelAttribute="loginForm">
 
-        <form method="POST" action="<c:url value='/login'/>">
+            <form:label path="username">Username:&nbsp</form:label>
+                <form:input path="username"/><br><br>
 
-            Username: <input type="text" name="username"><br><br>
-            Password: <input type="password" name="password"><br><br>
+            <form:label path="password">Password:&nbsp</form:label>
+                <form:input path="password"/><br><br>
 
             <input type="submit" value="Log In">
-        </form>
+
+        </form:form>
+
     </body>
 </html>

@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: ashte
@@ -16,19 +15,11 @@
 
     <body>
 
-    <a href="<c:url value='/login'>
-
-        <c:param name='logout'/>
-
-        </c:url>">Logout</a>
+    <a href="<c:url value='/logout'/>">Logout</a>
 
     <h2>Customer Tickets</h2>
 
-    <a href = "<c:url value = '/ticket'>
-
-            <c:param name='action' value='createTicket'/>
-
-        </c:url>">Create Post</a><br><br>
+    <a href = "<c:url value = '/ticket/create'/>">Create Ticket</a><br><br>
 
     <c:choose>
         <c:when test="${ticketDatabase.size() == 0}">
@@ -38,18 +29,19 @@
         </c:when>
 
         <c:otherwise>
+
             <c:forEach var="ticket" items="${ticketDatabase}">
 
                 Ticket # &nbsp; <c:out value="${ticket.key}"/>
 
-                <a href="<c:url value = '/ticket'>
+                    <a href="<c:url value='/ticket/list/${ticket.key}'/>">
 
-                    <c:param name='action' value='view'/>
-                    <c:param name='ticketid' value='${ticket.key}'/>
+                    <c:out value="${ticket.value.subject}"/></a><br>
 
-                    </c:url>">&nbsp;<c:out value="${ticket.value.title}"/></a><br>
             </c:forEach>
+
         </c:otherwise>
+
     </c:choose>
 
     </body>

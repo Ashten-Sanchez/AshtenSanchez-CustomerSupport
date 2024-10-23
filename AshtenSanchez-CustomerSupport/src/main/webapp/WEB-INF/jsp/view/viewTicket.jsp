@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: ashte
@@ -16,11 +15,7 @@
 
     <body>
 
-    <a href="<c:url value='/login'>
-
-        <c:param name='logout'/>
-
-        </c:url>">Logout</a>
+    <a href="<c:url value='/logout'/>">Logout</a>
 
     <h2>Subject: <u><c:out value = "${ticket.subject}"/></u></h2>
 
@@ -30,24 +25,14 @@
 
     <c:if test = "${ticket.hasAttachments()}">
 
-        <a href = "<c:url value = '/ticket'>
+            <a href="<c:url value='/ticket/${ticketId}/attachment/${ticket.attachmentName}' />">
+                <c:out value="${ticket.attachmentName}"/></a>
 
-            <c:param name='action' value='download'/>
-
-            <c:param name='ticketid' value='${ticketid}'/>
-
-            <c:param name='attachment' value='${ticket.attachment.name}'/>
-
-                </c:url>">
-
-            <c:out value="${ticket.attachment().name()}"/>
-
-        </a>
     </c:if>
 
     <br>
 
-    <a href = "ticket">Return to Ticket List</a>
+    <a href = "<c:url value='/ticket/list'/>">Return to Ticket List</a>
 
     </body>
 </html>
