@@ -5,7 +5,6 @@
   Time: 10:45 AM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
     <head>
 
@@ -32,11 +31,11 @@
 
             <c:forEach var="ticket" items="${ticketDatabase}">
 
-                Ticket # &nbsp; <c:out value="${ticket.key}"/>
+                Ticket # &nbsp; <c:out value="${ticket.id}"/>
 
-                    <a href="<c:url value='/ticket/list/${ticket.key}'/>">
+                    <a href="<c:url value='/ticket/view/${ticket.id}'/>">
 
-                    <c:out value="${ticket.value.subject}"/></a><br>
+                    <c:out value="${ticket.subject}"/></a><br>
 
             </c:forEach>
 

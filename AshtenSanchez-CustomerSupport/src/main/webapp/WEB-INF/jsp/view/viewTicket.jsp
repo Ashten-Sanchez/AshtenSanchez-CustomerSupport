@@ -5,11 +5,10 @@
   Time: 10:45 AM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
     <head>
 
-        <title>Ticket #<c:out value = "${ticketid}"/></title>
+        <title>Ticket #<c:out value = "${ticketId}"/></title>
 
     </head>
 
@@ -25,8 +24,8 @@
 
     <c:if test = "${ticket.hasAttachments()}">
 
-            <a href="<c:url value='/ticket/${ticketId}/attachment/${ticket.attachmentName}' />">
-                <c:out value="${ticket.attachmentName}"/></a>
+            <a href="<c:url value='/ticket/${ticketId}/attachment/${ticket.attachments.name}'/>">
+                <c:out value="${ticket.attachments.name}"/></a>
 
     </c:if>
 

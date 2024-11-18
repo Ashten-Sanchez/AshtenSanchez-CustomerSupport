@@ -13,7 +13,7 @@
 <body>
 
 <h2>An error occured or this page doesn't exist</h2>
-<br><a href="ticket">Return to ticket list</a>
+<br><a href="<c:url value='/ticket/list'/>">Return to ticket list</a>
 
 </body>
 </html>
