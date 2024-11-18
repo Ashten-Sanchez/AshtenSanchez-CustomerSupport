@@ -1,0 +1,28 @@
+CREATE DATABASE TicketDatabase DEFAULT CHARACTER SET 'utf8' DEFAULT COLLATE 'utf8_unicode_ci';
+
+USE TicketDatabase;
+
+CREATE TABLE Tickets (
+	id BIGINT UNSIGNED NOT NULL PRIMARY KEY auto_increment,
+    subject varchar(255) NOT NULL,
+    cusName varchar(25),
+    body varchar(10000)
+) ENGINE = InnoDB;
+
+CREATE TABLE Attachments (
+	id BIGINT UNSIGNED NOT NULL PRIMARY KEY auto_increment,
+    ticketId BIGINT UNSIGNED NOT NULL,
+    name varchar(25),
+    contents BLOB NOT NULL,
+    CONSTRAINT Attachment_TicketId FOREIGN KEY (ticketId)
+		REFERENCES Tickets(id) on DELETE CASCADE
+) ENGINE = InnoDB;
+
+CREATE TABLE UserPrinciples (
+	id BIGINT UNSIGNED NOT NULL PRIMARY KEY auto_increment,
+    username varchar(30) NOT NULL,
+    hashedPassword binary(60) NOT NULL,
+    UNIQUE KEY UserPrinciples_username(username)
+) ENGINE = InnoDB;
+
+ALTER TABLE Attachments MODIFY name VARCHAR(512);

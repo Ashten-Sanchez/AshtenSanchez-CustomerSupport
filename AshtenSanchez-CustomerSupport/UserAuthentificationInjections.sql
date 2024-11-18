@@ -1,0 +1,3 @@
+INSERT INTO userprinciples (username, hashedPassword) VALUES ("Ash", "$2a$10$cs.K08y37NjVUIpNTURXOO73VU8b2Mx2nEHCa39WO/..5IPLROUe6");
+INSERT INTO userprinciples (username, hashedPassword) VALUES ("Jane", "$2a$10$C.uPaCGauAZZHS7Es5DL6ePS6zVQfETR43nacaS8tRQE6ZSF8tfGC");
+INSERT INTO userprinciples (username, hashedPassword) VALUES ("Jack", "$2a$10$xBS8.wkBAiqu/Gbn.IWLIOSoIzERBL2DZa1Ez5iZf.Fuzr/W8XjpC");
