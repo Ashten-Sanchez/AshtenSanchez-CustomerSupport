@@ -1,5 +1,7 @@
 package com.ashtensanchezcustomersupport.site;
 
+import com.ashtensanchezcustomersupport.entities.Attachment;
+import jakarta.inject.Inject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -17,14 +19,17 @@ import java.util.Map;
 
 public class TicketController {
 
-    private volatile int TICKET_ID = 1;
+    //private volatile int TICKET_ID = 1;
 
-    private Map<Integer, Ticket> ticketDB = new LinkedHashMap<>();
+    //private Map<Integer, Ticket> ticketDB = new LinkedHashMap<>();
+
+    @Inject
+    TicketService ticketService;
 
     @RequestMapping(value = {"list", ""})
     public String listTickets(Model model) {
 
-        model.addAttribute("ticketDatabase", ticketDB);
+        model.addAttribute("ticketDatabase", ticketService.getAllTickets());
         return "listTickets";
     }
 
@@ -44,29 +49,34 @@ public class TicketController {
 
         MultipartFile file = form.getAttachment();
 
-        if (file != null && !file.isEmpty()) {
-            Attachment attachment = new Attachment();
+        Attachment attachment = new Attachment();
             attachment.setName(file.getOriginalFilename());
             attachment.setContents(file.getBytes());
+
+        if ((attachment.getName() != null && attachment.getName().length() > 0) ||
+                (attachment.getContents() != null && attachment.getContents().length > 0)) {
+
             ticket.setAttachments(attachment);
         }
 
-        int id;
+        /*int id;
 
         synchronized (this) {
 
             id = this.TICKET_ID++;
 
             ticketDB.put(id, ticket);
-        }
+        }*/
 
-        return new RedirectView("view/" + id, true, false);
+        ticketService.save(ticket);
+
+        return new RedirectView("view/" + ticket.getId(), true, false);
     }
 
     @GetMapping("view/{ticketId}")
     public ModelAndView viewTicket(Model model, @PathVariable("ticketId") int ticketId) {
 
-        Ticket ticket = ticketDB.get(ticketId);
+        Ticket ticket = ticketService.getTicket(ticketId);
 
         if (ticket == null) {
 
@@ -83,7 +93,7 @@ public class TicketController {
     public View downloadAttachment(@PathVariable("ticketId") int ticketId,
                                    @PathVariable("attachment") String attachmentName) {
 
-        Ticket ticket = ticketDB.get(ticketId);
+        Ticket ticket = ticketService.getTicket(ticketId);
 
         if (ticket == null) {
 

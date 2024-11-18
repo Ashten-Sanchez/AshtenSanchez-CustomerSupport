@@ -1,9 +1,12 @@
 package com.ashtensanchezcustomersupport.site;
 
+import com.ashtensanchezcustomersupport.entities.Attachment;
+
 import java.io.Serializable;
 
 public class Ticket implements Serializable {
 
+    private long id;
     private String customerName;
     private String subject;
     private String body;
@@ -15,14 +18,14 @@ public class Ticket implements Serializable {
         super();
     }
 
-    public Ticket(String customerName, String subject, String body, String attachmentName,
-                  Attachment attachments) {
+    public long getId() {
 
-        this.customerName = customerName;
-        this.subject = subject;
-        this.body = body;
-        this.attachmentName = attachmentName;
-        this.attachments = attachments;
+        return id;
+    }
+
+    public void setId(long id) {
+
+        this.id = id;
     }
 
     public String getAttachmentName() {
